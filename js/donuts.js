@@ -44,7 +44,7 @@ function donut(newData , chartName, displayName ){
           .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
           .attr("dy", ".35em")
           .style("text-anchor", "middle");
-      g.select("text").text(function(d) { return d.data.key  + " - "  d.data.value ; });
+      g.select("text").text(function(d) { return d.data.key  + " - " + d.data.value ; });
 
       svg.append("text")
           .datum(newData)
