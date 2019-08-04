@@ -11,11 +11,11 @@
           .attr('transform', `translate(${margin.left},${margin.top})`);
  
   var x = d3.scale.ordinal()
-      .domain(Object.keys(data))
+      .domain(data.map(function(d) { return d['name']; }))
       .rangeRoundBands([0, width], .1);
 
   var y = d3.scale.linear()
-      .domain([0, d3.max(Object.values(data))])
+      .domain([0, d3.max(data, function(d) { return d['value']; }) * 1.1])
       .range([height, 0]);
 
 
@@ -44,7 +44,7 @@
       .data(data)
     .enter().append("rect")
       .style("fill", "steelblue")
-      .attr("x", function(d) { return x(d.key); })
+      .attr("x", function(d) { return x(d.name); })
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); });
