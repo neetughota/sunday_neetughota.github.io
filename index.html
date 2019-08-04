@@ -5,75 +5,19 @@
 <title>NBA 2018/19 Season Leaders</title>
 <link rel="stylesheet" href="/css/style.css" type="text/css">
 <body>
-<h1>NBA 2018/19 Regular Season Leaders</h1>	
+<div class="row">	
+	<h1>NBA 2018/19 Regular Season Leaders</h1>	
+</div>	
 <script src="https://d3js.org/d3.v3.js"></script>
 <script type='text/javascript' src='/js/ppg.js'></script>
-<script type='text/javascript' src='/js/apg.js'></script>
-<script type='text/javascript' src='/js/spg.js'></script>
-<script type='text/javascript' src='/js/mpg.js'></script>
-<script type='text/javascript' src='/js/rpg.js'></script>
-<div class="chartArea"></div>
-<script>
-populateTablePPG("Points Per Game")
-var margin = {top: 10, right: 10, bottom: 10, left: 10}
-var width = 1300 - margin.left - margin.right, height = 800 - margin.top - margin.bottom	
-var svg1 = d3.select("body").select(".chartArea").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)      
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
- var svgtext = svg1.append("text")
-       .attr("x",(width/2))
-       .attr("y",(margin.top*2))
-    	.style("text-anchor","middle")
-    	.style("font-size","24px")
-    	.style("fill","#FFFFFF")    	
-    	.style("font-weight","bold")
-    	.text("Select Player Name to display Stats")   
-var displayPlayer = function(playerName){
-var margin = {top: 10, right: 10, bottom: 10, left: 10}
-var width = 1300 - margin.left - margin.right, height = 800 - margin.top - margin.bottom	
-svg1.selectAll("*").remove();
-d3.json('Roster.json',function (data) { 
-var filteredData =  data.players.filter(function(d) {if( d.name == playerName) {return d};});  
-var svgName = svg1.selectAll("text").data([0])
- svgName.enter()
-	.append("text")
-        .attr("x",(width/2))
-        .attr("y",(margin.top*2))
-    	.style("text-anchor","middle")
-    	.style("font-size","24px")
-    	.style("fill","#FFFFFF")    	
-    	.style("font-weight","bold")
-    	.text(playerName) 
-svgName.exit()
-	.remove()
-var svgimage =svg1.selectAll("image").data([0])
-svgimage.enter()
-	.append("svg:image")
-	.attr("x",290)
-    	.attr("y",(margin.top+20))
-    	.attr("width", 200)
-	.attr("height", 250)    	      		
-    	.attr("xlink:href", filteredData[0]["imgURL"]) 
-svgimage.exit()
-	.remove()
-var svgWt = svg1.selectAll("text").data([0])
- svgWt.enter()
-	.append("text")
-        .attr("x",(width/2))
-        .attr("y",280)
-    	.style("text-anchor","middle")
-    	.style("font-size","24px")
-    	.style("fill","#FFFFFF")    	
-    	.style("font-weight","bold")
-    	.text(playerName) 
-svgWt.exit()
-	.remove()
- 
-});
-}	 
-//d3.select(self.frameElement).style("height", "800px").style("width", "10800px");	
-</script>
+<div class ="container">
+	<div class ="row> <div class="col">
+	<div class="chartArea"></div>
+	</div></div>
+	<div class ="row><div class="col">
+	<div class="chartArea"></div>
+		</div>		 </div>     
+			      
+</div>
 </body>
 </html>
