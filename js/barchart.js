@@ -22,7 +22,7 @@
      var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
      var y = d3.scale.linear().range([height, 0]);
 
-       x.domain(data.map(function(d) { return d.key; }));
+       x.domain(Object.keys(data));
       y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
   svg.append("g")
