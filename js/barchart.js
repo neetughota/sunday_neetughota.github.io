@@ -2,7 +2,7 @@
   
       const margin = { left: 10, right: 30, top: 5, bottom: 75 };
 
-      const svg =  d3.select(chartName).append("svg").attr("width",350).attr("height",300),;
+      const svg =  d3.select(chartName).append("svg").attr("width",350).attr("height",300);
       const width = svg.attr('width');
       const height = svg.attr('height');
       const innerWidth = width - margin.left - margin.right;
@@ -55,4 +55,4 @@
       .attr("height", function(d) { return height - y(d.value); });
 
      
-    }
+    };
