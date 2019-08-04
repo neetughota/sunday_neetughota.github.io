@@ -44,7 +44,7 @@ while(div.firstElementChild){
 	newData_3["FGPt"] = parseInt(player["FGPt"]);
 	
 	newData_3["5TO9FGPt"] = parseInt(player["5TO9FGPt"]);
-	newData_3["10TO14FGPt"=parseInt(player["10TO14FGPt"]) ;
+	newData_3["10TO14FGPt"] =parseInt(player["10TO14FGPt"]) ;
 	
 	newData_3[ "15TO19FGPt"] =parseInt(player["15TO19FGPt"]);
 	
