@@ -124,5 +124,5 @@ d3.json('Roster.json',function (data) {
   };
 
   return object;
-};
+});
         };
