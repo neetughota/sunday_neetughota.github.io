@@ -9,26 +9,21 @@
       const innerHeight = height - margin.top - margin.bottom; 
       const g = svg.append('g')
           .attr('transform', `translate(${margin.left},${margin.top})`);
-      
-     var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+ 
+  var x = d3.scale.ordinal()
+      .domain(Object.keys(data))
+      .rangeRoundBands([0, width], .1);
 
-    var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10);
+  var y = d3.scale.linear()
+      .domain([0, d3.max(Object.values(data))])
+      .range([height, 0]);
 
-     var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
-     var y = d3.scale.linear().range([height, 0]);
 
-       x.domain(Object.keys(data));
-      y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
+      .call(x)
     .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
@@ -37,7 +32,7 @@
 
   svg.append("g")
       .attr("class", "y axis")
-      .call(yAxis)
+      .call(y)
     .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
