@@ -13,7 +13,7 @@ function donut(newData , chartName ){
   var $el = d3.select(chartName)
  
   // var showTitle = true;
-  var width = 200,
+  var width = 300,
       height = 200,
       radius = Math.min(width, height) / 2;
 
@@ -95,7 +95,28 @@ function donut(newData , chartName ){
       svg.select("text.text-tooltip").datum(newData);
     }      
  
+var legendG = svg.selectAll(".legend") // note appending it to mySvg and not svg to make positioning easier
+  .data(pie(d3.entries(newData)))
+  .enter().append("g")
+  .attr("transform", function(d,i){
+    return "translate(" + (width - 110) + "," + (i * 15 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
+  })
+  .attr("class", "legend");   
 
+legendG.append("rect") // make a matching color rect
+  .attr("width", 10)
+  .attr("height", 10)
+  .attr("fill", function(d, i) {
+    return color(d.data.key);
+  });
+
+legendG.append("text") // add the text
+  .text(function(d){
+    return d.data.value + "  " + d.data.key;
+  })
+  .style("font-size", 12)
+  .attr("y", 10)
+  .attr("x", 11);
   // Getter and setter methods
   object.newData = function(value){
     if (!arguments.length) return newData;
@@ -125,27 +146,6 @@ function donut(newData , chartName ){
 
   return object;
 
-	var legendG = svg.selectAll(".legend") // note appending it to mySvg and not svg to make positioning easier
-  .data(pie(newData))
-  .enter().append("g")
-  .attr("transform", function(d,i){
-    return "translate(" + (width - 110) + "," + (i * 15 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
-  })
-  .attr("class", "legend");   
-
-legendG.append("rect") // make a matching color rect
-  .attr("width", 10)
-  .attr("height", 10)
-  .attr("fill", function(d, i) {
-    return colour(i);
-  });
-
-legendG.append("text") // add the text
-  .text(function(d){
-    return d.data.value + "  " + d.data.emote;
-  })
-  .style("font-size", 12)
-  .attr("y", 10)
-  .attr("x", 11);
+	
 	
         };
