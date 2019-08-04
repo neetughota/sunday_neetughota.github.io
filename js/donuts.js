@@ -1,4 +1,10 @@
-function donut(){  
+function donut(player){  
+  
+  var playerName = player.Name;
+d3.json('Roster.json',function (data) {
+  
+  var filteredData =  data.players.filter(function(d) {  if( d.name == playerName) {return d};});
+  
   // Default settings
   var $el = d3.select("body")
   var data = {};
@@ -119,3 +125,4 @@ function donut(){
 
   return object;
 };
+        };
