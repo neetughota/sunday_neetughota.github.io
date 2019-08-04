@@ -5,7 +5,7 @@ function donut(newData , chartName, displayName ){
   var $el = d3.select(chartName)
  
   // var showTitle = true;
-  var width = 350,
+  var width = 450,
       height = 200,
       radius = Math.min(width, height) / 2;
 
@@ -91,7 +91,7 @@ var legendG = svg.selectAll(".legend") // note appending it to mySvg and not svg
   .data(pie(d3.entries(newData)))
   .enter().append("g")
   .attr("transform", function(d,i){
-    return "translate(" + (100) + "," + (i * 15 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
+    return "translate(" + (200) + "," + (i * 15 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
   })
   .attr("class", "legend");   
 
