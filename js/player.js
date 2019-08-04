@@ -24,14 +24,14 @@ while(div.firstElementChild){
 	newData["2PA"] = parseInt(player["2PA"]);
 	newData["3PA"] = parseInt(player["3PA"]);
 	
-	 donut(newData, "#chart");
+	 donut(newData, "#chart", ["FT Attemps","2 Pt Attemps", "3 Pt Attemps"]);
 	
 	 var newData ={};
 	newData.FTM =  parseInt(player["FTM"]);
 	newData["2PM"] = parseInt(player["2PM"]);
 	newData["3PM"] = parseInt(player["3PM"]);
 	
-	 donut(newData, "#chart2");
+	 donut(newData, "#chart2", ["FT Made","2 Pt Made", "3 Pt Made"]);
 	
    //document.write(html);
 })
