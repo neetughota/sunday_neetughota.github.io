@@ -69,11 +69,12 @@ th {
 td { background-color: #17408B; }
 tr:hover td { background-color: #C9082A; }
 .bar {
-  fill: #80cbc4;
+  fill: #C9082A;
 }
 text {
-  font-size: 12px;
+  font-size: 14px;
   fill: #fff;
+  font-weight: bold;
 }
 
 path {
