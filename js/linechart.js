@@ -11,6 +11,10 @@ d3.json("Roster.json", function(error, data) {
 		newObj.RatingValue =( filteredData[0]["ratings"][0][key]); 
 		newData.push(newObj);
 	}
+	
+	newData = newData.sort(function (a, b) {
+            return d3.ascending(a.value, b.value);
+        })
   	//data.sort(function(a, b) { return a.value - b.value; });
 	var svg =  d3.select("#linechart").append("svg").attr("width",660).attr("height",300),
     	margin = {top: 20, right: 20, bottom: 30, left: 80},
@@ -27,18 +31,28 @@ d3.json("Roster.json", function(error, data) {
 	//var y = d3.scaleBand().range([height, 0]).padding(.1);
 	//var color = d3.scaleOrdinal(d3.schemeCategory10);
 	
-	var y = d3.scale.ordinal().rangeRoundBands([height, 0], .1);
+	 var x = d3.scale.linear()
+            .range([0, width])
+            .domain([0, d3.max(newData, function (d) {
+                return d.RatingValue;
+            })]);
 
-	var x = d3.scale.linear().range([0, width]);
+        var y = d3.scale.ordinal()
+            .rangeRoundBands([height, 0], .1)
+            .domain(data.map(function (d) {
+                return d.Rating;
+            }));
+
 
 	var xAxis = d3.svg.axis()
 		.scale(x)
 		.orient("bottom");
 
-	var yAxis = d3.svg.axis()
-		.scale(y)
-		.orient("left")
-		.ticks(10, "%");
+	  var yAxis = d3.svg.axis()
+            .scale(y)
+            //no tick marks
+            .tickSize(0)
+            .orient("left");
 	
 	
   	x.domain([0, d3.max(newData, function(d){ return  d.RatingValue ; })])
@@ -68,7 +82,7 @@ d3.json("Roster.json", function(error, data) {
       bars.append("rect")
         .attr("class", "bar")
         .attr("x", 0)
-        .attr("height", y.bandwidth())
+        .attr("height", y.rangeBand())
         .attr("y", function(d) { return y(d.Rating); })
         .attr("width", function(d) { return x(d.RatingValue); })
 	 .style('fill',function(d,i) {return color(i);})
@@ -86,7 +100,7 @@ d3.json("Roster.json", function(error, data) {
             .attr("class", "label")
             //y position of the label is halfway down the bar
             .attr("y", function (d) {
-                return y(d.Rating) + y.bandwidth() / 2 + 4;
+                return y(d.Rating) + y.rangeBand() / 2 + 4;
             })
             //x position is 3 pixels to the right of the bar
             .attr("x", function (d) {
