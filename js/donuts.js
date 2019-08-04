@@ -14,7 +14,7 @@ function donut(player){
  
   // var showTitle = true;
   var width = 200,
-      height = 400,
+      height = 200,
       radius = Math.min(width, height) / 2;
 
   var currentVal;
