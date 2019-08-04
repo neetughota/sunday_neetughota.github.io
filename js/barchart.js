@@ -1,74 +1,58 @@
-      const xValue = d => d.PPG;
-      const xLabel = 'Points Per Game';
-      const yValue = d => d.Name;
-      const yLabel = 'Player Names';
-      const margin = { left: 200, right: 30, top: 5, bottom: 75 };
+    function barchart(data , chartName, displayName ){  
+  
+      const margin = { left: 10, right: 30, top: 5, bottom: 75 };
 
-      const svg = d3.select('svg');
+      const svg =  d3.select(chartName).append("svg").attr("width",350).attr("height",300),;
       const width = svg.attr('width');
       const height = svg.attr('height');
       const innerWidth = width - margin.left - margin.right;
-      const innerHeight = height - margin.top - margin.bottom;
-
-      
-       
+      const innerHeight = height - margin.top - margin.bottom; 
       const g = svg.append('g')
           .attr('transform', `translate(${margin.left},${margin.top})`);
-      const xAxisG = g.append('g')
-          .attr('transform', `translate(0, ${innerHeight})`);
-      const yAxisG = g.append('g');
+      
+     var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
 
-      xAxisG.append('text')
-          .attr('class', 'axis-label')
-          .attr('x', innerWidth / 2)
-          .attr('y', 55)
-          .text(xLabel);
+    var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
 
-      const xScale = d3.scaleLinear();
-      const yScale = d3.scaleBand()
-        .paddingInner(0.3)
-        .paddingOuter(0);
+     var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+     var y = d3.scale.linear().range([height, 0]);
 
-      const xTicks = 10;
-      const xAxis = d3.axisBottom()
-        .scale(xScale)
-        .ticks(xTicks)
-        .tickPadding(5)        
-        .tickSize(-innerHeight);
+       x.domain(data.map(function(d) { return d.date; }));
+      y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
-      const yAxis = d3.axisLeft()
-        .scale(yScale)
-        .tickPadding(5)
-        .tickSize(-innerWidth);           
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", "-.55em")
+      .attr("transform", "rotate(-90)" );
 
-const row = d => {
-      if (d.Team === "GOL") {  
-      return {              
-          PPG: +d.PPG,
-          Name: d.Name };
-      }
-      };   
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Value ($)");
 
-      d3.csv('data.csv', row, data => {
-        yScale
-          .domain(data.map(yValue).reverse())
-          .range([innerHeight, 0]);
+  svg.selectAll("bar")
+      .data(data)
+    .enter().append("rect")
+      .style("fill", "steelblue")
+      .attr("x", function(d) { return x(d.date); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); });
 
-        xScale
-          .domain([0, d3.max(data, xValue)])
-          .range([0, innerWidth])
-          .nice(xTicks);
-
-        g.selectAll('rect').data(data)
-          .enter().append('rect')
-            .attr('x', 0)
-            .attr('y', d => yScale(yValue(d)))
-            .attr('width', d => xScale(xValue(d)))
-            .attr('height', d => yScale.bandwidth())
-            .attr('fill', 'steelblue');
-
-        xAxisG.call(xAxis);
-
-        yAxisG.call(yAxis);
-        yAxisG.selectAll('.tick line').remove();
-      });
+     
+    }
