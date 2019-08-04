@@ -1,7 +1,7 @@
 body { 
   background-image:url("/nba.jpg");
   font: 10px sans-serif;
-  color: #FFFFFF
+  
 }
 .chartArea{
       position: relative;}
