@@ -1,4 +1,4 @@
-function donut(newData , chartName ){  
+function donut(newData , chartName, displayName ){  
   
  /* var playerName = player.Name;
 
@@ -111,8 +111,8 @@ legendG.append("rect") // make a matching color rect
   });
 
 legendG.append("text") // add the text
-  .text(function(d){
-    return d.data.value + "  " + d.data.key;
+  .text(function(d,i){
+    return displayName[i];
   })
   .style("font-size", 12)
   .attr("y", 10)
