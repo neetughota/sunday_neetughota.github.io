@@ -42,10 +42,7 @@
             .orient("left");
 	
 	
-  	x.domain([0, d3.max(newData, function(d){ return  d.value ; })])
-        y.domain(newData.map(function(d) { return d.key }));
- 	//color.domain(newData.map(function(d) { return d.Rating }));
-    
+  	
 	g.append("g")
         .attr("class", "x axis")
        	.attr("transform", "translate(0," + height + ")")
