@@ -5,7 +5,14 @@ d3.json('Roster.json',function (data) {
   
   var filteredData =  data.players.filter(function(d) {  if( d.name == playerName) {return d};});
     
+d3.select("body").select("#playerInfo")  
+ .append("svg")
+ .attr("width", width + margin.left + margin.right)
+ .attr("height", height + 100 + margin.top + margin.bottom)
+ .append("g").attr("id","svg2")
+ .attr("transform", "translate(" + margin.left + "," + margin.top + ")");	
 
+	
   var html = '<div class="row" style="margin-right: 15px;margin-left: 15px;">'+
             '<div class="col" style="max-width: 30%;"> <img style="height:200px" src = "' + filteredData[0]["imgURL"] +'"></img> </div>'+
             '<div class="col" > <div id="chart"> </div> </div> ' +
@@ -18,7 +25,10 @@ d3.json('Roster.json',function (data) {
 while(div.firstElementChild){
     div.removeChild(div.firstElementChild);
 }
-   document.getElementById('playerInfo').insertAdjacentHTML('afterbegin',html);
+	var svgid = document.getElementById("svg2")
+    svgid.insertAdjacentHTML('afterbegin',html);
+	
+ //  document.getElementById('playerInfo').insertAdjacentHTML('afterbegin',html);
    displayLineChart (player);
 	 var newData ={};
 	newData.FTA =  parseInt(player["FTA"]);
