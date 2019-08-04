@@ -39,7 +39,7 @@ while(div.firstElementChild){
 	 donut(newData_2, "#chart2", ["FT Made","2 Pt Made", "3 Pt Made"]);
 	var newData_arr =[];
 	 var newData_3 ={};
-	newData_3.name = ["FGPt"];
+	newData_3.name = "FGPt";
 	newData_3.value = parseInt(player["FGPt"]);
 	newData_arr.push(newData_3);
 	 var newData_3 ={};
