@@ -1,16 +1,16 @@
-function donut(player){  
+function donut(newData , chartName ){  
   
-  var playerName = player.Name;
+ /* var playerName = player.Name;
 
   var newData ={};
 	newData.FTA =  parseInt(player["FTA"]);
 	newData["2PA"] = parseInt(player["2PA"]);
 	newData["3PA"] = parseInt(player["3PA"]);
 	
-	
+	*/
 	
   // Default settings
-  var $el = d3.select("#chart")
+  var $el = d3.select(chartName)
  
   // var showTitle = true;
   var width = 200,
