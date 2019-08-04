@@ -71,3 +71,16 @@ tr:hover td { background-color: #C9082A; }
 .bar {
   fill: #80cbc4;
 }
+text {
+  font-size: 12px;
+  fill: #fff;
+}
+
+path {
+  stroke: gray;
+}
+
+line {
+  stroke: gray;
+}
+
