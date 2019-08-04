@@ -47,12 +47,12 @@ function donut(player){
         // Attach current value to g so that we can use it for animation
         .each(function(d) { this._current = d; })
         .attr("d", arc)
-        .style("fill", function(d) { return color(d.newData.key); });
+        .style("fill", function(d) { return color(d.key); });
       g.append("text")
           .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
           .attr("dy", ".35em")
           .style("text-anchor", "middle");
-      g.select("text").text(function(d) { return d.newData.key; });
+      g.select("text").text(function(d) { return d.key; });
 
       svg.append("text")
           .datum(newData)
@@ -66,7 +66,7 @@ function donut(player){
       g.on("mouseover", function(obj){
         console.log(obj)
         svg.select("text.text-tooltip")
-        .attr("fill", function(d) { return color(obj.newData.key); })
+        .attr("fill", function(d) { return color(obj.key); })
         .text(function(d){
           return d[obj.newData.key];
         });
