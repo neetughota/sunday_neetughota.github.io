@@ -68,7 +68,7 @@ function donut(player){
         svg.select("text.text-tooltip")
         .attr("fill", function(d) { return color(obj.key); })
         .text(function(d){
-          return d[obj.newData.key];
+          return d[obj.key];
         });
       });
 
