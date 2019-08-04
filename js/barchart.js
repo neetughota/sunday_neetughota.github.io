@@ -1,5 +1,4 @@
  function barchart(newData , chartName, displayName ){
-{
 	newData = newData.sort(function (a, b) {
             return d3.ascending(a.RatingValue, b.RatingValue);
         })
