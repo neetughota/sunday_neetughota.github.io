@@ -1,13 +1,5 @@
 function donut(newData , chartName, displayName ){  
   
- /* var playerName = player.Name;
-
-  var newData ={};
-	newData.FTA =  parseInt(player["FTA"]);
-	newData["2PA"] = parseInt(player["2PA"]);
-	newData["3PA"] = parseInt(player["3PA"]);
-	
-	*/
 	
   // Default settings
   var $el = d3.select(chartName)
@@ -52,7 +44,7 @@ function donut(newData , chartName, displayName ){
           .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
           .attr("dy", ".35em")
           .style("text-anchor", "middle");
-      g.select("text").text(function(d) { return d.data.key; });
+      g.select("text").text(function(d) { return d.data.key  + " - "  d.data.value ; });
 
       svg.append("text")
           .datum(newData)
@@ -114,8 +106,7 @@ legendG.append("text") // add the text
   .text(function(d,i){
     return displayName[i];
   })
-  .style("font-size", 12)
-  .attr("width", 20)
+  .style("font-size", 11)
   .attr("y", 10)
   .attr("x", 11);
   // Getter and setter methods
