@@ -66,14 +66,14 @@ function donut(player){
       g.on("mouseover", function(obj){
         console.log(obj.data)
         svg.select("text.text-tooltip")
-        .attr("fill", function(d) { return color(obj.data.key); })
+        .attr("fill", function(d) { return color(obj.data.value ); })
         .text(function(d){
           return d[obj.data.key];
         });
       });
 
       g.on("mouseout", function(obj){
-        svg.select("text.text-tooltip").text(obj.data.key + "-" + obj.data.value );
+        svg.select("text.text-tooltip").text( obj.data.value );
       });
 
     }else{
