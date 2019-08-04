@@ -1,18 +1,13 @@
 function donut(player){  
   
   var playerName = player.Name;
-d3.json('Roster.json',function (data) {
-  
-  var filteredData =  data.players.filter(function(d) {  if( d.name == playerName) {return d};});
+
   var newData ={};
-	newData.FTA =  parseInt(filteredData[0]["FTA"]);
-	newData["2PA"] = parseInt(filteredData[0]["2PA"]);
-	newData["3PA"] = parseInt(filteredData[0]["3PA"]);
+	newData.FTA =  parseInt(player["FTA"]);
+	newData["2PA"] = parseInt(player["2PA"]);
+	newData["3PA"] = parseInt(player["3PA"]);
 	
-	var newData_ftm ={};
-	newData_ftm.FTM =  parseInt(filteredData[0]["FTM"]);
-	newData_ftm["2PM"] = parseInt(filteredData[0]["2PM"]);
-	newData_ftm["3PM"] = parseInt(filteredData[0]["3PM"]);
+	
 	
   // Default settings
   var $el = d3.select("body")
@@ -133,5 +128,5 @@ d3.json('Roster.json',function (data) {
   };
 
   return object;
-});
+
         };
