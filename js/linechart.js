@@ -23,22 +23,36 @@ d3.json("Roster.json", function(error, data) {
 	var g = svg.append("g")
 		.attr("transform", "translate("+ margin.top + "," + margin.top  + ")");
   
-  var x = d3.scaleLinear().range([0, width]);
-	var y = d3.scaleBand().range([height, 0]).padding(.1);
-	var color = d3.scaleOrdinal(d3.schemeCategory10);
+ 	 //var x = d3.scaleLinear().range([0, width]);
+	//var y = d3.scaleBand().range([height, 0]).padding(.1);
+	//var color = d3.scaleOrdinal(d3.schemeCategory10);
+	
+	var y = d3.scale.ordinal().rangeRoundBands([height, 0], .1);
+
+	var x = d3.scale.linear().range([0, width]);
+
+	var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+	var yAxis = d3.svg.axis()
+		.scale(y)
+		.orient("left")
+		.ticks(10, "%");
+	
 	
   	x.domain([0, d3.max(newData, function(d){ return  d.RatingValue ; })])
         y.domain(newData.map(function(d) { return d.Rating }));
- 	color.domain(newData.map(function(d) { return d.Rating }));
+ 	//color.domain(newData.map(function(d) { return d.Rating }));
     
 	g.append("g")
         .attr("class", "x axis")
        	.attr("transform", "translate(0," + height + ")")
-      	.call(d3.axisBottom(x).ticks(10).tickFormat(function(d) { return parseInt(d ); }).tickSizeInner([2]));
+      	.call(xAxis);
 
     	g.append("g")
         .attr("class", "y axis")
-        .call(d3.axisLeft(y));
+        .call(yAxis);
 
 	 var bars = g.selectAll(".bar")
             .data(newData)
