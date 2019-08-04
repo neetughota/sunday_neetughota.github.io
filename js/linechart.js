@@ -13,10 +13,10 @@ d3.json("Roster.json", function(error, data) {
 	}
 	
 	newData = newData.sort(function (a, b) {
-            return d3.ascending(a.value, b.value);
+            return d3.ascending(a.RatingValue, b.RatingValue);
         })
   	//data.sort(function(a, b) { return a.value - b.value; });
-	var svg =  d3.select("#linechart").append("svg").attr("width",660).attr("height",300),
+	var svg =  d3.select("#linechart").append("svg").attr("width",560).attr("height",300),
     	margin = {top: 40, right: 20, bottom: 30, left: 80},
     	width = +svg.attr("width") - margin.left - margin.right,
    	 height = +svg.attr("height") - margin.top - margin.bottom;
