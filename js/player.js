@@ -29,6 +29,7 @@ d3.select("body").select("#playerInfo")
             '<div class="col" > <div id="chart"> </div> </div> ' +
       '<div class="col" > <div id="chart2"> </div> </div> ' +
       '<div class="col" > <div id="chart3"> </div> </div> ' +
+      '<div class="col" > <div id="linechart"> </div> </div> ' +
       '</div>';
    
   var svgid = document.getElementById("svg2")
