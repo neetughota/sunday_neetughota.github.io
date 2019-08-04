@@ -36,9 +36,9 @@ while(div.firstElementChild){
 	newData_2["2PM"] = parseInt(player["2PM"]);
 	newData_2["3PM"] = parseInt(player["3PM"]);
 	
-	 donut(newData_2, "#chart2", ["FT Made","2 Pt Made", "3 Pt Made
+	 donut(newData_2, "#chart2", ["FT Made","2 Pt Made", "3 Pt Made"])
 				      
-				      var newData_arr =[];
+				      
 	 var newData_3 ={};
 	
 	newData_3["FGPt"] = parseInt(player["FGPt"]);
@@ -53,7 +53,7 @@ while(div.firstElementChild){
 	
 	newData_3[ "25TO29FGPt"] = parseInt(player["25TO29FGPt"]);
 	
-	donut(newData_arr, "#chart3", ["FG Pt","5TO9FGPt", "10TO14FGPt" ,"15TO19FGPt" ,"20TO24FGPt","25TO29FGPt"]);
+	donut(newData_3, "#chart3", ["FG Pt","5TO9FGPt", "10TO14FGPt" ,"15TO19FGPt" ,"20TO24FGPt","25TO29FGPt"]);
 	
 	
 	/*var newData_arr =[];
