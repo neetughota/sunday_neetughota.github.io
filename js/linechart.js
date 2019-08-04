@@ -23,9 +23,9 @@ d3.json("Roster.json", function(error, data) {
 	var g = svg.append("g")
 		.attr("transform", "translate("+ margin.top + "," + margin.top  + ")");
   
-  	var x = d3.scaleLinear().range([0, width]);
-	var y = d3.scaleBand().range([height, 0]).padding(.1);
-	var color = d3.scaleOrdinal(d3.schemeCategory10);
+  	var x = d3.scale.linear().range([0, width]);
+	var y = d3.scale.ordinal().rangeBands([height, 0]).padding(.1);
+	var color = d3.scale.category10;
 
   	x.domain([0, d3.max(newData, function(d){ return  d.RatingValue ; })])
         y.domain(newData.map(function(d) { return d.Rating }));
