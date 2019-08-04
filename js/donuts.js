@@ -10,7 +10,7 @@ function donut(player){
 	
 	
   // Default settings
-  var $el = d3.select("body")
+  var $el = d3.select("#chart")
  
   // var showTitle = true;
   var width = 200,
