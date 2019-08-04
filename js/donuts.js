@@ -106,7 +106,7 @@ legendG.append("text") // add the text
   .text(function(d,i){
     return displayName[i];
   })
-  .style("font-size", 11)
+  .style("font-size", 10)
   .attr("y", 10)
   .attr("x", 11);
   // Getter and setter methods
