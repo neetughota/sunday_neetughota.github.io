@@ -22,7 +22,7 @@
      var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
      var y = d3.scale.linear().range([height, 0]);
 
-       x.domain(data.map(function(d) { return d.date; }));
+       x.domain(data.map(function(d) { return d.key; }));
       y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
   svg.append("g")
@@ -49,7 +49,7 @@
       .data(data)
     .enter().append("rect")
       .style("fill", "steelblue")
-      .attr("x", function(d) { return x(d.date); })
+      .attr("x", function(d) { return x(d.key); })
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); });
