@@ -91,7 +91,7 @@ var legendG = svg.selectAll(".legend") // note appending it to mySvg and not svg
   .data(pie(d3.entries(newData)))
   .enter().append("g")
   .attr("transform", function(d,i){
-    return "translate(" + (95) + "," + (i * 10 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
+    return "translate(" + (100) + "," + (i * 10 + 20) + ")"; // place each legend on the right and bump each one down 15 pixels
   })
   .attr("class", "legend");   
 
