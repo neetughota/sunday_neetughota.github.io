@@ -10,6 +10,7 @@ d3.json('Roster.json',function (data) {
             '<div class="col" style="max-width: 30%;"> <img style="height:200px" src = "' + filteredData[0]["imgURL"] +'"></img> </div>'+
             '<div class="col" > <div id="chart"> </div> </div> ' +
       '<div class="col" > <div id="chart2"> </div> </div> ' +
+      '<div class="col" > <div id="chart3"> </div> </div> ' +
             '<div class="col" > <div id="linechart"> </div> </div> ' 
       '</div>';
    
@@ -26,12 +27,23 @@ while(div.firstElementChild){
 	
 	 donut(newData, "#chart", ["FT Attemps","2 Pt Attemps", "3 Pt Attemps"]);
 	
-	 var newData ={};
-	newData.FTM =  parseInt(player["FTM"]);
-	newData["2PM"] = parseInt(player["2PM"]);
-	newData["3PM"] = parseInt(player["3PM"]);
+	 var newData_2 ={};
+	newData_2.FTM =  parseInt(player["FTM"]);
+	newData_2["2PM"] = parseInt(player["2PM"]);
+	newData_2["3PM"] = parseInt(player["3PM"]);
 	
-	 donut(newData, "#chart2", ["FT Made","2 Pt Made", "3 Pt Made"]);
+	 donut(newData_2, "#chart2", ["FT Made","2 Pt Made", "3 Pt Made"]);
+	
+	 var newData_3 ={};
+	newData_3["FGPt"] =  parseInt(player["FGPt"]);
+	newData_3["5TO9FGPt"] =  parseInt(player["5TO9FGPt"]);
+	newData_3["10TO14FGPt"] = parseInt(player["10TO14FGPt"]);
+	newData_3["15TO19FGPt"] = parseInt(player["15TO19FGPt"]);
+	newData_3["20TO24FGPt"] = parseInt(player["20TO24FGPt"]);
+	newData_3["25TO29FGPt"] = parseInt(player["25TO29FGPt"]);
+	 barchart(newData_3, "#chart3", ["FT Made","2 Pt Made", "3 Pt Made"]);
+	
+	
 	
    //document.write(html);
 })
