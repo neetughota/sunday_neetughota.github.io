@@ -73,7 +73,7 @@ function donut(player){
       });
 
       g.on("mouseout", function(obj){
-        svg.select("text.text-tooltip").text( obj.data.value );
+        svg.select("text.text-tooltip").text( d[obj.data.key] );
       });
 
     }else{
