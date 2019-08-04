@@ -27,9 +27,6 @@ function donut(player){
 
 
   var object = {};
-
-  // Method for render/refresh graph
-  object.render = function(){
     if(!svg){
       arc = d3.svg.arc()
       .outerRadius(radius)
@@ -97,8 +94,7 @@ function donut(player){
 
       svg.select("text.text-tooltip").datum(newData);
     }      
-    return object;
-  };
+ 
 
   // Getter and setter methods
   object.newData = function(value){
