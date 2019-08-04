@@ -8,7 +8,7 @@ d3.json("Roster.json", function(error, data) {
 	for (var key in filteredData[0]["ratings"][0]) {
 		var newObj ={};
   		newObj.Rating =  key;
-		newObj.RatingValue =( filteredData[0]["ratings"][0][key]); 
+		newObj.RatingValue =parseInt( filteredData[0]["ratings"][0][key]); 
 		newData.push(newObj);
 	}
 	
@@ -39,7 +39,7 @@ d3.json("Roster.json", function(error, data) {
 
         var y = d3.scale.ordinal()
             .rangeRoundBands([height, 0], .1)
-            .domain(data.map(function (d) {
+            .domain(newData.map(function (d) {
                 return d.Rating;
             }));
 
