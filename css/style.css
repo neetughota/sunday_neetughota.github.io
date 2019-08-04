@@ -13,10 +13,10 @@ body {
       left:10px;}	
 
 #container {
-  width: 1500;
-  height: 400;
-  position: absolute;
-  background: rgba(76, 175, 80, 0.1)
+  width: 1500!important;
+  height: 400!important;
+  position: absolute!important;
+  background: rgba(76, 175, 80, 0.1)!important;
 }
 
 #title {
