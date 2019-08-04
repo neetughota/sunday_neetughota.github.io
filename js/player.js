@@ -23,6 +23,10 @@ d3.json('Roster.json',function (data) {
        '</div>'+
       '</div>';
    
+  var div = document.getElementById('playerInfo');
+while(div.firstChild){
+    div.removeChild(div.firstChild);
+}
    document.getElementById('playerInfo').insertAdjacentHTML('afterbegin',html);
   
    //document.write(html);
