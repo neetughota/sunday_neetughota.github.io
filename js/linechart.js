@@ -17,7 +17,7 @@ d3.json("Roster.json", function(error, data) {
         })
   	//data.sort(function(a, b) { return a.value - b.value; });
 	var svg =  d3.select("#linechart").append("svg").attr("width",660).attr("height",300),
-    	margin = {top: 20, right: 20, bottom: 30, left: 80},
+    	margin = {top: 40, right: 20, bottom: 30, left: 80},
     	width = +svg.attr("width") - margin.left - margin.right,
    	 height = +svg.attr("height") - margin.top - margin.bottom;
   
@@ -86,15 +86,7 @@ d3.json("Roster.json", function(error, data) {
         .attr("y", function(d) { return y(d.Rating); })
         .attr("width", function(d) { return x(d.RatingValue); })
 	// .style('fill',function(d,i) {return color(i);})
-        .on("mousemove", function(d){
-            tooltip
-              .style("left", d3.event.pageX - 50 + "px")
-              .style("top", d3.event.pageY - 70 + "px")
-              .style("display", "inline-block")
-              .html((d.Rating) + "<br>" +  + (d.RatingValue));
-        })
-    		.on("mouseout", function(d){ tooltip.style("display", "none");});
-	
+        
 	
 	bars.append("text")
             .attr("class", "label")
