@@ -68,3 +68,6 @@ th {
 }
 td { background-color: #17408B; }
 tr:hover td { background-color: #C9082A; }
+.bar {
+  fill: #80cbc4;
+}
