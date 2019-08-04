@@ -5,7 +5,23 @@ d3.json('Roster.json',function (data) {
   
   var filteredData =  data.players.filter(function(d) {  if( d.name == playerName) {return d};});
     
+	var margin = {top: 40, right: 160, bottom: 35, left: 30}
+var width = 1300 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+	var div = document.getElementById("playerInfo");
+while(div.firstElementChild){
+    div.removeChild(div.firstElementChild);
+}
+
 	
+d3.select("body").select("#playerInfo")  
+ .append("svg")
+ .attr("id","svg2")
+ .attr("width", width + margin.left + margin.right)
+ .attr("height", height + 100 + margin.top + margin.bottom)
+ .append("g")
+ .attr("transform", "translate(" + margin.left + "," + margin.top + ")");	
 
 	
   var html = '<div class="row" style="margin-right: 15px;margin-left: 15px;">'+
@@ -15,13 +31,11 @@ d3.json('Roster.json',function (data) {
       '<div class="col" > <div id="chart3"> </div> </div> ' +
       '</div>';
    
-  var div = document.getElementById('playerInfo2');
-while(div.firstElementChild){
-    div.removeChild(div.firstElementChild);
-}
+  var svgid = document.getElementById("svg2")
+svgid.insertAdjacentHTML('afterbegin',html);
 
 	
-   document.getElementById('playerInfo2').insertAdjacentHTML('afterbegin',html);
+  // document.getElementById('playerInfo2').insertAdjacentHTML('afterbegin',html);
    displayLineChart (player);
 	 var newData ={};
 	newData.FTA =  parseInt(player["FTA"]);
