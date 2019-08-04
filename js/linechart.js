@@ -85,7 +85,7 @@ d3.json("Roster.json", function(error, data) {
         .attr("height", y.rangeBand())
         .attr("y", function(d) { return y(d.Rating); })
         .attr("width", function(d) { return x(d.RatingValue); })
-	 .style('fill',function(d,i) {return color(i);})
+	// .style('fill',function(d,i) {return color(i);})
         .on("mousemove", function(d){
             tooltip
               .style("left", d3.event.pageX - 50 + "px")
