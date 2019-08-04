@@ -27,9 +27,9 @@ while(div.firstElementChild){
 	 donut(newData, "#chart");
 	
 	 var newData ={};
-	newData.FTA =  parseInt(player["FTA"]);
-	newData["2PA"] = parseInt(player["2PA"]);
-	newData["3PA"] = parseInt(player["3PA"]);
+	newData.FTM =  parseInt(player["FTM"]);
+	newData["2PM"] = parseInt(player["2PM"]);
+	newData["3PM"] = parseInt(player["3PM"]);
 	
 	 donut(newData, "#chart2");
 	
