@@ -577,6 +577,7 @@ if (d == "Steals Per Game") {
 table.selectAll("tr").on("click",function(d,i){	
 	 showPlayerInfo(d);
 	 displayLineChart (d);
+	donut(d);
 	return;
     	});
 
