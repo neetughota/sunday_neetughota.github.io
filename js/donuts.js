@@ -4,12 +4,21 @@ function donut(player){
 d3.json('Roster.json',function (data) {
   
   var filteredData =  data.players.filter(function(d) {  if( d.name == playerName) {return d};});
-  
+  var newData ={};
+	newData.FTA =  parseInt(filteredData[0]["FTA"]);
+	newData["2PA"] = parseInt(filteredData[0]["2PA"]);
+	newData["3PA"] = parseInt(filteredData[0]["3PA"]);
+	
+	var newData_ftm ={};
+	newData_ftm.FTM =  parseInt(filteredData[0]["FTM"]);
+	newData_ftm["2PM"] = parseInt(filteredData[0]["2PM"]);
+	newData_ftm["3PM"] = parseInt(filteredData[0]["3PM"]);
+	
   // Default settings
   var $el = d3.select("body")
-  var data = {};
+ 
   // var showTitle = true;
-  var width = 960,
+  var width = 200,
       height = 400,
       radius = Math.min(width, height) / 2;
 
@@ -38,7 +47,7 @@ d3.json('Roster.json',function (data) {
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
       g = svg.selectAll(".arc")
-        .data(pie(d3.entries(data)))
+        .data(pie(d3.entries(newData)))
       .enter().append("g")
       .attr("class", "arc");
 
@@ -46,15 +55,15 @@ d3.json('Roster.json',function (data) {
         // Attach current value to g so that we can use it for animation
         .each(function(d) { this._current = d; })
         .attr("d", arc)
-        .style("fill", function(d) { return color(d.data.key); });
+        .style("fill", function(d) { return color(d.newData.key); });
       g.append("text")
           .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
           .attr("dy", ".35em")
           .style("text-anchor", "middle");
-      g.select("text").text(function(d) { return d.data.key; });
+      g.select("text").text(function(d) { return d.newData.key; });
 
       svg.append("text")
-          .datum(data)
+          .datum(newData)
           .attr("x", 0 )
           .attr("y", 0 + radius/10 )
           .attr("class", "text-tooltip")        
@@ -65,9 +74,9 @@ d3.json('Roster.json',function (data) {
       g.on("mouseover", function(obj){
         console.log(obj)
         svg.select("text.text-tooltip")
-        .attr("fill", function(d) { return color(obj.data.key); })
+        .attr("fill", function(d) { return color(obj.newData.key); })
         .text(function(d){
-          return d[obj.data.key];
+          return d[obj.newData.key];
         });
       });
 
@@ -76,7 +85,7 @@ d3.json('Roster.json',function (data) {
       });
 
     }else{
-      g.data(pie(d3.entries(data))).exit().remove();
+      g.data(pie(d3.entries(newData))).exit().remove();
 
       g.select("path")
       .transition().duration(200)
@@ -91,15 +100,15 @@ d3.json('Roster.json',function (data) {
       g.select("text")
       .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; });
 
-      svg.select("text.text-tooltip").datum(data);
+      svg.select("text.text-tooltip").datum(newData);
     }      
     return object;
   };
 
   // Getter and setter methods
-  object.data = function(value){
-    if (!arguments.length) return data;
-    data = value;
+  object.newData = function(value){
+    if (!arguments.length) return newData;
+    newData = value;
     return object;
   };
 
