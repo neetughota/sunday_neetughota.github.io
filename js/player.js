@@ -17,8 +17,8 @@ while(div.firstElementChild){
     div.removeChild(div.firstElementChild);
 }
    document.getElementById('playerInfo').insertAdjacentHTML('afterbegin',html);
-   displayLineChart (d);
-	 donut(d);
+   displayLineChart (player);
+	 donut(player);
    //document.write(html);
 })
 }
