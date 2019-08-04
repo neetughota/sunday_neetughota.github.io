@@ -1,6 +1,6 @@
 
 var showPlayerInfo = function(player){ 
-  var playerName = player.name;
+  var playerName = player.Name;
 d3.json('Roster.json',function (data) {
   
   var filteredData =  data.players.filter(function(d) {  if( d.name == playerName) {return d};});
@@ -12,8 +12,8 @@ d3.json('Roster.json',function (data) {
       '</div>';
    
   var div = document.getElementById('playerInfo');
-while(div.firstChild){
-    div.removeChild(div.firstChild);
+while(div.firstElementChild){
+    div.removeChild(div.firstElementChild);
 }
    document.getElementById('playerInfo').insertAdjacentHTML('afterbegin',html);
   
