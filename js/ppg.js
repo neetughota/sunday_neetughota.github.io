@@ -580,3 +580,4 @@ table.selectAll("tr").on("click",function(d,i){
 
 });
 }
+populateTablePPG ("Points Per Game");
