@@ -1,12 +1,6 @@
-var playerName = decodeURI(getUrlVars()["player"]);
 
-function getUrlVars() {
-  var vars = {};
-  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-    vars[key] = value;
-  });
-  return vars;
-}
+var showPlayerInfo = function(player){ 
+  var playerName = player.name;
 d3.json('Roster.json',function (data) {
   
   var filteredData =  data.players.filter(function(d) {  if( d.name == playerName) {return d};});
@@ -33,3 +27,4 @@ d3.json('Roster.json',function (data) {
   
    //document.write(html);
 })
+}
